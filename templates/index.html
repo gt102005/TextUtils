@@ -1,16 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Text Simplifier</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* Basic page styling */
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #f4f7f6;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+    }
+
+    /* Form container */
+    form {
+      background-color: #ffffff;
+      padding: 25px 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      width: 100%;
+      max-width: 500px;
+      box-sizing: border-box; /* Ensures padding doesn't affect width */
+    }
+
+    /* Form title */
+    h3 {
+      text-align: center;
+      color: #333;
+      margin-top: 0;
+      margin-bottom: 20px;
+    }
+
+    /* Text area styling */
+    textarea {
+      width: 100%;
+      min-height: 150px;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 1rem;
+      margin-bottom: 20px;
+      box-sizing: border-box; /* Ensures padding doesn't affect width */
+    }
+
+    /* === Checkbox Grid Layout === */
+    .checkbox-container {
+      display: grid;
+      /* Create 3 equal-width columns */
+      grid-template-columns: repeat(3, 1fr);
+      /* Add spacing between checkbox items */
+      gap: 12px;
+      margin-bottom: 25px; /* Space above the submit button */
+    }
+
+    /* Checkbox label styling */
+    .checkbox-container label {
+      display: flex;
+      align-items: center;
+      padding: 8px;
+      border-radius: 6px;
+      background-color: #f9f9f9;
+      border: 1px solid #eee;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+    
+    .checkbox-container label:hover {
+      background-color: #f0f0f0;
+    }
+
+    /* Checkbox input styling */
+    .checkbox-container input[type="checkbox"] {
+      margin-right: 8px;
+      cursor: pointer;
+    }
+
+    /* Submit button styling */
+    input[type="submit"] {
+      width: 100%;
+      padding: 12px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+  </style>
 </head>
 <body>
-    <form method='get' action='/analyze'>
-        <h3>Enter Your Texts Here For Simplification</h3>
-        <textarea  name="textarea" placeholder="Enter texts here"></textarea>
-        <input type="checkbox" name="Uppercase">Uppercase<br>
-        <input type="submit" value="submit">
-      </form>
+
+  <form method="get" action="/show">
+    <h3>Enter Your Texts Here For Simplification</h3>
+
+    <textarea name="textarea" placeholder="Enter texts here"></textarea>
+
+    <div class="checkbox-container">
+      <label><input type="checkbox" name="uppercase">Uppercase</label>
+      <label><input type="checkbox" name="lowercase">Lowercase</label>
+      <label><input type="checkbox" name="puncuations">Punctuation</label>
+      <label><input type="checkbox" name="newlines">Newlines</label>
+      <label><input type="checkbox" name="space_remove">Space Remove</label>
+    </div>
+
+    <input type="submit" value="Analyze Texts">
+  </form>
+
 </body>
 </html>

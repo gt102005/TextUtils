@@ -1,12 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  {% if output %}
+    <title>Formatted Text Output</title>
+  {% else %}
+    <title>Text Simplifier</title>
+  {% endif %}
+
+  <style>
+    /* Basic page styling */
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #f4f7f6;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+    }
+
+    /* Main content box styling
+      This will style BOTH the <form> on the first page 
+      and the <div class="container"> on the second page.
+    */
+    form,
+    .container {
+      background-color: #ffffff;
+      padding: 25px 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      width: 100%;
+      max-width: 500px;
+      box-sizing: border-box; /* Ensures padding doesn't affect width */
+    }
+
+    /* Form title (styles h3 on both pages) */
+    h3 {
+      text-align: center;
+      color: #333;
+      margin-top: 0;
+      margin-bottom: 20px;
+    }
+
+    /* === PAGE 1: FORM STYLES === */
+
+    /* Text area styling */
+    textarea {
+      width: 100%;
+      min-height: 150px;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 1rem;
+      margin-bottom: 20px;
+      box-sizing: border-box; 
+    }
+
+    /* Checkbox Grid Layout */
+    .checkbox-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 25px; 
+    }
+
+    /* Checkbox label styling */
+    .checkbox-container label {
+      display: flex;
+      align-items: center;
+      padding: 8px;
+      border-radius: 6px;
+      background-color: #f9f9f9;
+      border: 1px solid #eee;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+
+    .checkbox-container label:hover {
+      background-color: #f0f0f0;
+    }
+
+    /* Checkbox input styling */
+    .checkbox-container input[type="checkbox"] {
+      margin-right: 8px;
+      cursor: pointer;
+    }
+
+    /* Submit button styling */
+    input[type="submit"] {
+      width: 100%;
+      padding: 12px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+
+
+    /* === PAGE 2: OUTPUT STYLES === */
+
+    /* Output text box styling */
+    .output-box {
+      background-color: #f9f9f9;
+      border: 1px solid #eee;
+      border-radius: 8px;
+      padding: 20px;
+      min-height: 150px; /* Same min-height as textarea for consistency */
+      line-height: 1.5;
+      
+      /* These properties preserve formatting from your server */
+      white-space: pre-wrap; 
+      word-wrap: break-word;
+    }
+
+    /* "Back to Form" button styling */
+    .back-btn {
+      display: inline-block;
+      margin-top: 20px;
+      color: #007bff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .back-btn:hover {
+      color: #0056b3;
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
-    <h3><u> Your Formatted Texts Are Here </u></h3>
-    <P>{{formatted_texts}}</P>
+
+  {% if output %}
+
+    <div class="container">
+      <h3><u>Your Formatted Texts Are Here</u></h3>
+      <p class="output-box">{{output}}</p>
+      <a href="/" class="back-btn">← Back to Form</a>
+    </div>
+    
+
+  {% endif %}
+
 </body>
 </html>
