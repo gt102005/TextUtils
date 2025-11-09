@@ -105,7 +105,8 @@
 </head>
 <body>
 
-  <form method="get" action="/show">
+  <form method="post" action="/show/">
+    {% csrf_token %}
     <h3>Enter Your Texts Here For Simplification</h3>
 
     <textarea name="textarea" placeholder="Enter texts here"></textarea>

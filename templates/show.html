@@ -148,7 +148,11 @@
 
     <div class="container">
       <h3><u>Your Formatted Texts Are Here</u></h3>
-      <p class="output-box">{{output}}</p>
+      {% if error %}
+        <p class="output-box" style="color:red">{{output}}</p>
+      {% else %}
+        <p class="output-box">{{output}}</p>
+      {% endif %}
       <a href="/" class="back-btn">← Back to Form</a>
     </div>
     
